@@ -20,6 +20,11 @@
         background: var(--accent);
         color: white;
       }
+      /* Hide scroll when modal open */
+      .modal-open {
+        height: 100vh;
+        overflow: hidden;
+      }
     </style>
   </head>
 
@@ -83,9 +88,9 @@
 
         <!-- Project Card -->
         <article
-          class="group bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden md:flex"
-          data-aos="fade-up"
-          data-aos-delay="150"
+          class="group bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden md:flex cursor-pointer"
+          onclick="openModal()"
+          title="Click to explore more"
         >
           <!-- image -->
           <div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
@@ -110,18 +115,106 @@
               <li class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full">STAR‑CCM+</li>
               <li class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full">Overset Mesh</li>
             </ul>
-            <div class="mt-auto">
-              <a
-                href="Fluid_Structure_Interaction.pdf"
-                target="_blank"
-                class="inline-block mt-4 rounded-lg bg-teal-600 px-5 py-2.5 text-white font-medium shadow hover:bg-teal-700"
-                >Read Report</a
-              >
+            <div class="mt-auto hidden md:block">
+              <span class="inline-flex items-center gap-1 text-teal-600 text-sm">Click card for details ↗</span>
             </div>
           </div>
         </article>
       </div>
     </section>
+
+    <!-- ====== Modal (Project Details) ====== -->
+    <div
+      id="fly-modal"
+      class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="flex min-h-full items-center justify-center p-4 text-center">
+        <div
+          class="relative w-full max-w-5xl transform overflow-hidden rounded-3xl bg-white text-left shadow-xl transition-all"
+        >
+          <!-- Close -->
+          <button
+            onclick="closeModal()"
+            class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
+            aria-label="Close modal"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <!-- Modal content -->
+          <div class="p-8 md:p-12 space-y-8">
+            <header>
+              <h3 id="modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                CFD Simulation of Fruit‑Fly Wing‑Beat Motion
+              </h3>
+              <p class="text-gray-600 max-w-3xl">
+                A concise deep‑dive into the methodology &amp; key insights behind my STAR‑CCM+ study, focusing on
+                unsteady aerodynamics and degree‑of‑freedom passiveness.
+              </p>
+            </header>
+
+            <!-- Insights grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="space-y-4">
+                <h4 class="text-lg font-semibold text-gray-900">Aim</h4>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                  Analyse the unsteady aerodynamics of a rigid fruit‑fly wing during hovering. Special emphasis on how
+                  the passive or active nature of pitch, stroke &amp; elevation motions influences aerodynamic
+                  performance.
+                </p>
+
+                <h4 class="text-lg font-semibold text-gray-900 mt-6">Methodology</h4>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                  <li>Wingbeat trajectories reconstructed via Fourier series from high‑speed imaging</li>
+                  <li>Transient STAR‑CCM+ solver (1/1000<sup>th</sup> wingbeat) with overset mesh</li>
+                  <li>Stroke ↔ lift, elevation ↔ stability, pitch ↔ optimal angle‑of‑attack modelling</li>
+                </ul>
+
+                <h4 class="text-lg font-semibold text-gray-900 mt-6">Key Results</h4>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
+                  <li>Average lift ≈ <span class="font-medium">5.7 µN</span> → Lift/Weight ≈ 1 (hovering ✅)</li>
+                  <li>Pitch angle reversals + elevation peaks at stroke ends enable smooth AoA transitions</li>
+                  <li>Moment hysteresis loops reveal active muscle contribution during pitch reversals</li>
+                </ul>
+
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a href="Fluid_Structure_Interaction.pdf" target="_blank" class="text-teal-600 hover:underline text-sm"
+                    >Full Technical Report ↗</a
+                  >
+                  <a href="mailto:svkrishna1299@gmail.com" class="text-teal-600 hover:underline text-sm"
+                    >Request raw data ↗</a
+                  >
+                </div>
+              </div>
+
+              <!-- Image gallery -->
+              <div class="space-y-4">
+                <img
+                  src="fruitfly_images/wing_trajectory.png"
+                  alt="Wing trajectory"
+                  class="rounded-2xl shadow-md w-full object-contain"
+                />
+                <img
+                  src="fruitfly_images/velocity_contour.png"
+                  alt="Velocity contour top view"
+                  class="rounded-2xl shadow-md w-full object-contain"
+                />
+                <img
+                  src="fruitfly_images/lift_profile.png"
+                  alt="Lift profile over wingbeat cycle"
+                  class="rounded-2xl shadow-md w-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ====== About ====== -->
     <section id="about" class="py-28" data-aos="fade-up">
@@ -147,14 +240,12 @@
           <a
             href="mailto:svkrishna1299@gmail.com"
             class="inline-block rounded-lg bg-teal-600 px-6 py-3 text-white font-medium shadow hover:bg-teal-700"
-            >svkrishna1299@gmail.com</a
-          >
+            >svkrishna1299@gmail.com</a>
           <a
             href="https://www.linkedin.com/in/rajgopalakrishna/"
             target="_blank"
             class="inline-block rounded-lg border border-teal-600 px-6 py-3 text-teal-600 font-medium hover:bg-teal-50"
-            >Connect on LinkedIn</a
-          >
+            >Connect on LinkedIn</a>
         </div>
       </div>
     </section>
@@ -168,6 +259,24 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 700, once: true, easing: "ease-out-cubic" });
+
+      function openModal() {
+        document.getElementById("fly-modal").classList.remove("hidden");
+        document.body.classList.add("modal-open");
+      }
+
+      function closeModal() {
+        document.getElementById("fly-modal").classList.add("hidden");
+        document.body.classList.remove("modal-open");
+      }
+      // Close modal on ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+      // Close when clicking outside the dialog content
+      document.getElementById("fly-modal").addEventListener("click", (e) => {
+        if (e.target === e.currentTarget) closeModal();
+      });
     </script>
   </body>
 </html>
