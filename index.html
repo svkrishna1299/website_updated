@@ -1,0 +1,121 @@
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const projects = [
+  {
+    id: 1,
+    title: "CFD Simulation of Fruit Fly Wing Beat Motion",
+    subtitle: "Unsteady aerodynamics of fruit‑fly hovering wing",
+    description:
+      "High‑fidelity STAR‑CCM+ simulation using overset mesh to analyse lift, drag & aero‑elastic passiveness across pitch, stroke and elevation DOFs.",
+    tags: ["CFD", "FSI", "STAR‑CCM+", "Overset Mesh"],
+    image: "/images/fruitfly-placeholder.jpg", // Replace with your own hero screenshot
+    pdf: "/Fluid_Structure_Interaction.pdf"
+  }
+];
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 text-slate-800 font-sans scroll-smooth">
+      {/* ===== Header / Nav ===== */}
+      <header className="sticky top-0 z-50 backdrop-blur supports-backdrop-blur:bg-white/60 bg-white/60 border-b">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+          <a href="#" className="text-lg font-semibold tracking-tight">
+            Raj&nbsp;Gopala&nbsp;Krishna&nbsp;S.V
+          </a>
+          <nav className="hidden md:flex gap-6 text-sm">
+            <a href="#projects" className="hover:text-teal-600 transition-colors">Projects</a>
+            <a href="#about" className="hover:text-teal-600 transition-colors">About</a>
+            <a href="#contact" className="hover:text-teal-600 transition-colors">Contact</a>
+            <a href="/Resume-10.pdf" target="_blank" rel="noopener" className="hover:text-teal-600 transition-colors">Résumé</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* ===== Hero ===== */}
+      <section className="relative isolate overflow-hidden py-24 sm:py-32" id="hero">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,#99f6e4,transparent_35%),radial-gradient(circle_at_80%_80%,#bae6fd,transparent_45%)] opacity-30" />
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-4xl sm:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600">
+            Mechanical Engineer & CFD / AI Specialist
+          </motion.h1>
+          <p className="mt-6 text-lg/relaxed text-slate-600">
+            I design, simulate & optimise fluid‑dynamic systems – blending physics‑based modelling with machine learning for smarter solutions.
+          </p>
+          <div className="mt-8 flex justify-center gap-4">
+            <Button asChild size="lg">
+              <a href="#projects">See my work</a>
+            </Button>
+            <Button variant="outline" asChild size="lg">
+              <a href="/Resume-10.pdf" target="_blank" rel="noopener">Download CV</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Projects ===== */}
+      <section id="projects" className="max-w-7xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold mb-10 text-center">Featured Project</h2>
+        <div className="grid md:grid-cols-2 gap-10">
+          {projects.map(project => (
+            <Card key={project.id} className="shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <CardHeader className="p-0">
+                <img src={project.image} alt={project.title} className="h-56 w-full object-cover rounded-t-2xl" />
+              </CardHeader>
+              <CardContent className="p-6 space-y-4">
+                <CardTitle>{project.title}</CardTitle>
+                <CardDescription>{project.subtitle}</CardDescription>
+                <p className="text-sm text-slate-700 leading-relaxed">{project.description}</p>
+                <ul className="flex flex-wrap gap-2 text-xs">
+                  {project.tags.map(tag => (
+                    <li key={tag} className="bg-slate-100 px-2 py-1 rounded-md">{tag}</li>
+                  ))}
+                </ul>
+                <div className="flex gap-3 pt-2">
+                  <Button asChild size="sm">
+                    <a href={project.pdf} target="_blank" rel="noopener">Read Report</a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== About ===== */}
+      <section id="about" className="bg-white/60 py-20 border-y">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-6 text-center">About Me</h2>
+          <p className="text-slate-700 leading-relaxed">
+            I’m Raj, currently finishing an M.Sc. in Applied Mechanics at Chalmers University with a focus on CFD & Turbulence. From bird‑inspired micro‑aerial vehicle research to HVAC energy optimisation using AI, my work lives at the intersection of physics and data. When I’m not
+            iterating on meshes, you’ll find me tinkering with reinforcement‑learning controllers or sketching novel aerodynamic concepts.
+          </p>
+        </div>
+      </section>
+
+      {/* ===== Contact ===== */}
+      <section id="contact" className="py-20">
+        <div className="max-w-xl mx-auto px-6 text-center space-y-6">
+          <h2 className="text-3xl font-bold">Let’s build something together</h2>
+          <p className="text-slate-700">If you’ve got an idea in need of simulation insight—or you just want to chat fluid dynamics—drop me a line.</p>
+          <Button asChild size="lg">
+            <a href="mailto:svkrishna1299@gmail.com">svkrishna1299@gmail.com</a>
+          </Button>
+          <div>
+            <a href="https://www.linkedin.com/in/raj-gopala-krishna-s-v-563572209" target="_blank" rel="noopener" className="text-sm text-teal-700 underline hover:no-underline">Connect on LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Footer ===== */}
+      <footer className="py-10 text-center text-xs text-slate-500">
+        © {new Date().getFullYear()} Raj Gopala Krishna S.V — All rights reserved.
+      </footer>
+    </div>
+  );
+}
