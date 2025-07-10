@@ -5,245 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raj Gopala Krishna S V | Portfolio</title>
 
-    <!-- ⚡ Tailwind (via CDN for quick prototyping) -->
+    <!-- Tailwind CDN for quick prototyping → you can swap to a build pipeline later -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- AOS – Animate On Scroll (subtle fade‑ups) -->
+    <!-- AOS (Animate On Scroll) for smooth fade‑ups */ -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
+    <!-- Custom grid background (subtle) -->
     <style>
-      :root {
-        --accent: #14b8a6; /* teal‑500 */
+      body {
+        background-image: linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px);
+        background-size: 40px 40px;
       }
-      ::selection {
-        background: var(--accent);
-        color: white;
-      }
-      /* Hide scroll when side‑panel open */
-      .panel-open {
-        height: 100vh;
-        overflow: hidden;
-      }
+      /* hide scrollbar in slide panel on WebKit */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
   </head>
-  <body class="bg-white text-gray-800 font-sans leading-relaxed">
-    <!-- ====== Header / Navigation ====== -->
-    <header class="sticky top-0 z-20 bg-white/60 backdrop-blur supports-[backdrop-filter]:bg-white/40 shadow-sm">
-      <nav class="max-w-6xl mx-auto px-4 md:px-8 flex items-center justify-between h-16">
-        <a href="#home" class="font-semibold text-lg text-gray-900 hover:text-teal-600">Raj&nbsp;Gopala</a>
-        <ul class="hidden md:flex gap-6 text-sm font-medium">
-          <li><a href="#projects" class="hover:text-teal-600">Projects</a></li>
-          <li><a href="#about" class="hover:text-teal-600">About</a></li>
-          <li><a href="#contact" class="hover:text-teal-600">Contact</a></li>
-          <li>
-            <a href="Resume-10.pdf" target="_blank" class="text-teal-600 hover:text-teal-700">Résumé</a>
-          </li>
-        </ul>
-      </nav>
+  <body class="text-slate-800 selection:bg-teal-200/60">
+    <!-- =========  HERO  ========= -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-sm">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:flex lg:items-center lg:justify-between">
+        <div>
+          <h1 class="text-4xl font-extrabold leading-tight md:text-5xl">
+            Mechanical Engineer &amp;<br /> CFD Specialist
+          </h1>
+          <p class="mt-6 max-w-xl text-lg">
+            I design, simulate &amp; optimise <span class="font-medium text-teal-600">fluid‑dynamic systems</span>—blending physics‑based modelling with machine learning for smarter solutions.
+          </p>
+          <div class="mt-8 flex gap-4">
+            <a href="#projects" class="rounded-md bg-teal-600 px-6 py-3 text-white font-medium hover:bg-teal-700 transition">See my work</a>
+            <a href="Resume-10.pdf" class="rounded-md border border-teal-600 px-6 py-3 font-medium text-teal-600 hover:bg-teal-50 transition" target="_blank" rel="noopener">Download CV</a>
+          </div>
+        </div>
+        <img src="Main_Pic.png" alt="Fruit‑fly CFD simulation visualisation" class="hidden lg:block w-72" />
+      </div>
     </header>
 
-    <!-- ====== Hero ====== -->
-    <section id="home" class="pt-24 pb-32" data-aos="fade-up" data-aos-delay="100">
-      <div class="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Mechanical Engineer &amp; CFD Specialist
-          </h1>
-          <p class="mt-6 text-lg text-gray-600">
-            I design, simulate &amp; optimise <span class="text-teal-600 font-semibold">fluid‑dynamic systems</span>—blending
-            physics‑based modelling with machine learning for smarter solutions.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              class="inline-block rounded-lg bg-teal-600 px-6 py-3 text-white font-medium shadow hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-600"
-              >See my work</a
-            >
-            <a
-              href="Resume-10.pdf"
-              target="_blank"
-              class="inline-block rounded-lg border border-teal-600 px-6 py-3 text-teal-600 font-medium hover:bg-teal-50"
-              >Download CV</a
-            >
-          </div>
-        </div>
+    <!-- ========= PROJECTS  ========= -->
+    <section id="projects" class="relative z-10 py-24 bg-white/80 backdrop-blur-sm">
+      <div class="mx-auto max-w-7xl px-6">
+        <h2 class="text-3xl font-extrabold mb-12">Featured Project</h2>
 
-        <!-- Hero image -->
-        <div class="relative">
-          <img
-            src="Main_Pic.png"
-            alt="Fruit‑fly CFD simulation hero image"
-            class="w-full rounded-2xl shadow-lg"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== Projects ====== -->
-    <section id="projects" class="py-28 bg-gray-50/60" data-aos="fade-up">
-      <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12">Featured Project</h2>
-
-        <!-- Project Card (clickable) -->
-        <article
-          class="group bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden md:flex cursor-pointer"
-          onclick="openPanel()"
-          title="Click to explore more"
-        >
-          <!-- image -->
-          <div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
-            <img
-              src="Main_Pic.png"
-              alt="CFD simulation still of fruit‑fly wing‑beat"
-              class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          <!-- content -->
-          <div class="p-8 md:w-1/2 flex flex-col gap-4">
-            <h3 class="text-2xl font-semibold text-gray-900">CFD Simulation of Fruit‑Fly Wing‑Beat Motion</h3>
-            <p class="text-gray-600">
-              High‑fidelity <span class="text-teal-600 font-medium">STAR‑CCM+</span> simulation using overset meshes to analyse lift,
-              drag &amp; aero‑elastic passiveness across pitch, stroke and elevation degrees of freedom.
-              The study validates unsteady aerodynamics at insect scale and informs micro‑aerial vehicle design.
+        <!-- PROJECT CARD -->
+        <article id="projectCard" class="group cursor-pointer flex flex-col md:flex-row overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-slate-200/60 hover:ring-teal-400/60 transition" data-aos="fade-up" data-aos-delay="100">
+          <img src="Main_Pic.png" alt="CFD simulation still of fruit‑fly wing‑beat" class="h-60 w-full object-contain md:h-auto md:w-1/2 bg-white" />
+          <div class="flex flex-col gap-4 p-8 md:w-1/2">
+            <h3 class="text-2xl font-bold text-slate-900 group-hover:text-teal-600 transition">CFD Simulation of Fruit‑Fly Wing‑Beat Motion</h3>
+            <p class="text-slate-700">
+              High‑fidelity <strong>STAR‑CCM+</strong> simulation using overset meshes to analyse lift, drag &amp; aero‑elastic passiveness across pitch, stroke and elevation degrees of freedom. The study validates unsteady aerodynamics at insect scale and informs micro‑aerial‑vehicle design.
             </p>
-            <ul class="flex flex-wrap gap-2 text-sm font-medium mt-2">
-              <li class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full">CFD</li>
-              <li class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full">FSI</li>
-              <li class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full">STAR‑CCM+</li>
-              <li class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full">Overset Mesh</li>
-            </ul>
-            <div class="mt-auto hidden md:block">
-              <span class="inline-flex items-center gap-1 text-teal-600 text-sm">Click card for details ↗</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">CFD</span>
+              <span class="rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">FSI</span>
+              <span class="rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">STAR‑CCM+</span>
+              <span class="rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700">Overset Mesh</span>
             </div>
+            <button class="mt-4 self-start rounded-md bg-teal-600 px-5 py-2.5 text-white font-medium group-hover:bg-teal-700 transition">Read Report</button>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- ====== Side Panel (Project Details) ====== -->
-    <div id="fly-panel" class="fixed inset-0 z-50 hidden">
-      <!-- dark backdrop -->
-      <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closePanel()"></div>
+    <!-- ========= SLIDE‑OUT DETAILS PANEL ========= -->
+    <aside id="projectPanel" class="fixed inset-0 z-50 flex translate-x-full transition-transform duration-500 ease-in-out">
+      <!-- left rail (25%) -->
+      <div class="w-1/4 min-w-[260px] flex flex-col items-center justify-center bg-slate-900 text-white relative">
+        <img src="Main_Pic.png" alt="Fruit‑fly CFD hero" class="w-80 object-contain" />
+        <h2 class="mt-6 text-center text-xl font-semibold px-6">CFD Simulation of Fruit‑Fly Wing‑Beat Motion</h2>
+      </div>
 
-      <!-- sliding content wrapper -->
-      <div
-        id="fly-panel-content"
-        class="relative ml-auto h-full w-full lg:w-3/4 bg-white flex transform translate-x-full transition-transform duration-500 ease-out shadow-xl"
-      >
-        <!-- Left (25%) thumbnail & title -->
-        <aside class="w-1/4 hidden lg:flex flex-col items-center justify-center p-6 border-r">
-          <img src="Main_Pic.png" alt="Hero" class="rounded-xl shadow-lg mb-6 w-full object-contain" />
-          <h3 class="text-lg font-semibold text-center text-gray-900">CFD Simulation of Fruit‑Fly Wing‑Beat Motion</h3>
-        </aside>
+      <!-- right content (75%) -->
+      <div class="flex-1 overflow-y-auto bg-white px-8 py-12 space-y-10 no-scrollbar" data-aos="fade-left" data-aos-delay="200">
+        <!-- Aim -->
+        <section>
+          <h3 class="text-2xl font-bold mb-4">Aim</h3>
+          <p class="leading-relaxed">
+            Analyse the unsteady aerodynamics of a rigid fruit‑fly wing during hovering. Special emphasis on how the passive or active nature of pitch, stroke &amp; elevation motions influences aerodynamic performance.
+          </p>
+        </section>
 
-        <!-- Right (75%) detailed content -->
-        <section class="w-full lg:w-3/4 overflow-y-auto p-8 md:p-12 relative">
-          <!-- close button -->
-          <button
-            onclick="closePanel()"
-            class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
-            aria-label="Close panel"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+        <!-- Methodology -->
+        <section>
+          <h3 class="text-2xl font-bold mb-4">Methodology</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Wingbeat trajectories reconstructed via Fourier series from high‑speed imaging</li>
+            <li>Transient STAR‑CCM+ solver (1/1000<sup>th</sup> wingbeat) with overset mesh</li>
+            <li>Stroke ↔ lift, elevation ↔ stability, pitch ↔ optimal angle‑of‑attack modelling</li>
+          </ul>
+        </section>
 
-          <header class="pr-6">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-              CFD Simulation of Fruit‑Fly Wing‑Beat Motion
-            </h3>
-            <p class="text-gray-600 max-w-prose">
-              A concise deep‑dive into the methodology &amp; key insights behind my STAR‑CCM+ study, focusing on
-              unsteady aerodynamics and degree‑of‑freedom passiveness.
-            </p>
-          </header>
+        <!-- Key results -->
+        <section>
+          <h3 class="text-2xl font-bold mb-4">Key Results</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Average lift ≈ 5.7 µN → Lift/Weight ≈ 1 (hovering ✅)</li>
+            <li>Pitch angle reversals + elevation peaks at stroke ends enable smooth AoA transitions</li>
+            <li>Moment hysteresis loops reveal active muscle contribution during pitch reversals</li>
+          </ul>
+          <p class="mt-6">
+            <a href="Fluid_Structure_Interaction.pdf" target="_blank" class="text-teal-600 hover:underline">Full Technical Report ↗</a>
+            &nbsp;·&nbsp;
+            <a href="#" class="text-teal-600 hover:underline">Request raw data ↗</a>
+          </p>
+        </section>
 
-          <div class="mt-10 grid md:grid-cols-2 gap-8">
-            <!-- text column -->
-            <div class="space-y-6">
-              <div>
-                <h4 class="text-lg font-semibold text-gray-900">Aim</h4>
-                <p class="text-gray-700 text-sm leading-relaxed">
-                  Analyse the unsteady aerodynamics of a rigid fruit‑fly wing during hovering. Special emphasis on how
-                  the passive or active nature of pitch, stroke &amp; elevation motions influences aerodynamic
-                  performance.
-                </p>
-              </div>
-
-              <div>
-                <h4 class="text-lg font-semibold text-gray-900">Methodology</h4>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                  <li>Wingbeat trajectories reconstructed via Fourier series from high‑speed imaging</li>
-                  <li>Transient STAR‑CCM+ solver (1/1000<sup>th</sup> wingbeat) with overset mesh</li>
-                  <li>Stroke ↔ lift, elevation ↔ stability, pitch ↔ optimal angle‑of‑attack modelling</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 class="text-lg font-semibold text-gray-900">Key Results</h4>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
-                  <li>Average lift ≈ <span class="font-medium">5.7 µN</span> → Lift/Weight ≈ 1 (hovering ✅)</li>
-                  <li>Pitch angle reversals + elevation peaks at stroke ends enable smooth AoA transitions</li>
-                  <li>Moment hysteresis loops reveal active muscle contribution during pitch reversals</li>
-                </ul>
-              </div>
-
-              <div class="flex flex-wrap gap-4 pt-2">
-                <a href="Fluid_Structure_Interaction.pdf" target="_blank" class="text-teal-600 hover:underline text-sm"
-                  >Full Technical Report ↗</a
-                >
-                <a href="mailto:svkrishna1299@gmail.com" class="text-teal-600 hover:underline text-sm"
-                  >Request raw data ↗</a
-                >
-              </div>
-            </div>
-
-            <!-- gallery -->
-            <div class="space-y-6">
-              <img
-                src="fruitfly_images/wing_trajectory.png"
-                alt="Wing trajectory"
-                class="rounded-2xl shadow-md w-full object-contain"
-              />
-              <img
-                src="fruitfly_images/velocity_contour.png"
-                alt="Velocity contour top view"
-                class="rounded-2xl shadow-md w-full object-contain"
-              />
-              <img
-                src="fruitfly_images/lift_profile.png"
-                alt="Lift profile over wingbeat cycle"
-                class="rounded-2xl shadow-md w-full object-contain"
-              />
-            </div>
+        <!-- Gallery -->
+        <section>
+          <div class="grid gap-6 md:grid-cols-2" id="gallery">
+            <img src="fruitfly_images/aim-schematic.png" alt="Domain setup" class="rounded-lg shadow-lg opacity-0" data-aos="fade-up" data-aos-delay="0" />
+            <img src="fruitfly_images/wing-trajectory.png" alt="Wing trajectory" class="rounded-lg shadow-lg opacity-0" data-aos="fade-up" data-aos-delay="100" />
+            <img src="fruitfly_images/pitch-hysteresis.png" alt="Pitch moment hysteresis" class="rounded-lg shadow-lg opacity-0" data-aos="fade-up" data-aos-delay="200" />
+            <img src="fruitfly_images/velocity-contour.png" alt="Velocity contour" class="rounded-lg shadow-lg opacity-0" data-aos="fade-up" data-aos-delay="300" />
           </div>
         </section>
       </div>
-    </div>
 
-    <!-- ====== About ====== -->
-    <section id="about" class="py-28" data-aos="fade-up">
-      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">About Me</h2>
-        <p class="text-lg text-gray-700">
-          I’m Raj, currently finishing an M.Sc. in Applied Mechanics at Chalmers University with a focus on CFD &amp;
-          Turbulence. From bird‑inspired micro‑aerial vehicle research to HVAC energy optimisation using AI, my work
-          lives at the intersection of physics and data. When I’m not iterating on meshes, you’ll find me tinkering with
-          reinforcement‑learning controllers or sketching novel aerodynamic concepts.
-        </p>
-      </div>
-    </section>
+      <!-- close button -->
+      <button id="closePanel" aria-label="Close" class="absolute top-5 right-6 text-4xl text-white/70 hover:text-white focus:outline-none">&times;</button>
+    </aside>
 
-    <!-- ====== Contact ====== -->
-    <section id="contact" class="py-28 bg-gray-50/60" data-aos="fade-up">
-      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">Let’s build something together</h2>
-        <p class="text-gray-700 mb-8">
-          If you’ve got an idea in need of simulation insight—or you just want to chat fluid dynamics—drop me a line.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a
-            href="mailto:svkrishna1299@gmail.com"
-            class="inline-block rounded-lg bg-teal-600 px-6 py-3 text-white font-medium shadow hover:bg-teال
+    <!-- ========= FOOTER ========= -->
+    <footer class="py-12 text-center text-sm text-slate-500 bg-white/80 backdrop-blur-sm">
+      © <script>document.write(new Date().getFullYear())</script> Raj Gopala Krishna S V — All rights reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true, duration: 600, easing: 'ease-out-cubic' });
+
+      // Slide‑out panel behaviour
+      const card   = document.getElementById('projectCard');
+      const panel  = document.getElementById('projectPanel');
+      const close  = document.getElementById('closePanel');
+      const body   = document.body;
+
+      function openPanel() {
+        panel.classList.remove('translate-x-full');
+        body.classList.add('overflow-hidden');
+      }
+      function closePanel() {
+        panel.classList.add('translate-x-full');
+        body.classList.remove('overflow-hidden');
+      }
+
+      card.addEventListener('click', openPanel);
+      close.addEventListener('click', closePanel);
+      panel.addEventListener('click', (e) => {
+        if (e.target === panel) closePanel(); // click on backdrop
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePanel();
+      });
+    </script>
+  </body>
+</html>
