@@ -5,28 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raj Gopala Krishna S V | Portfolio</title>
 
-    <!-- Tailwind CSS (via CDN for quick prototyping) -->
+    <!-- Tailwind CSS (CDN for quick prototype) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- AOS (Animate On Scroll) for fade-ins -->
+    <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Subtle dotted-grid background -->
     <style>
       body {
         background-image:
-          linear-gradient(rgba(0, 0, 0, .04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 0, 0, .04) 1px, transparent 1px);
+          linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
         background-size: 40px 40px;
       }
-      /* hide scrollbar in WebKit inside slide panel */
       .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
   </head>
 
   <body class="text-slate-800 selection:bg-teal-200/60">
 
-    <!-- ========= GLOBAL NAV ========= -->
+    <!-- ===== NAV ===== -->
     <nav class="fixed inset-x-0 top-0 z-40 bg-white/90 backdrop-blur
                 flex items-center justify-between px-6 py-4 border-b border-slate-200">
       <a href="#top" class="text-lg font-bold tracking-wide">Raj Gopala</a>
@@ -39,11 +38,9 @@
                class="text-teal-600 hover:underline">Résumé</a></li>
       </ul>
     </nav>
-
-    <!-- spacer to offset fixed nav -->
     <div class="h-16" id="top"></div>
 
-    <!-- ========= HERO ========= -->
+    <!-- ===== HERO ===== -->
     <header class="py-24" data-aos="fade-up">
       <div class="mx-auto max-w-7xl px-6 lg:flex lg:items-center lg:justify-between">
         <div class="max-w-xl">
@@ -51,18 +48,18 @@
             Mechanical Engineer &amp; CFD Specialist
           </h1>
           <p class="mt-6 text-lg leading-relaxed">
-            I design, simulate &amp; optimise <span class="font-medium text-teal-600">fluid-dynamic systems</span>—blending physics-based modelling with machine learning for smarter solutions.
+            I design, simulate &amp; optimise
+            <span class="font-medium text-teal-600">fluid-dynamic systems</span>—blending
+            physics-based modelling with machine learning for smarter solutions.
           </p>
 
           <div class="mt-8 flex gap-4">
             <a href="#projects"
-               class="rounded-md bg-teal-600 px-6 py-3 text-white font-medium hover:bg-teal-700 transition">
-              See my work
-            </a>
+               class="rounded-md bg-teal-600 px-6 py-3 text-white font-medium
+                      hover:bg-teal-700 transition">See my work</a>
             <a href="Resume-10.pdf" target="_blank" rel="noopener"
-               class="rounded-md border border-teal-600 px-6 py-3 font-medium text-teal-600 hover:bg-teal-50 transition">
-              Download CV
-            </a>
+               class="rounded-md border border-teal-600 px-6 py-3 font-medium
+                      text-teal-600 hover:bg-teal-50 transition">Download CV</a>
           </div>
         </div>
 
@@ -72,7 +69,7 @@
       </div>
     </header>
 
-    <!-- ========= PROJECTS ========= -->
+    <!-- ===== PROJECTS ===== -->
     <section id="projects" class="py-24 bg-white/80 backdrop-blur-sm"
              data-aos="fade-up" data-aos-delay="100">
       <div class="mx-auto max-w-7xl px-6">
@@ -80,24 +77,23 @@
 
         <!-- PROJECT CARD -->
         <article id="projectCard"
-                 class="group cursor-pointer flex flex-col md:flex-row overflow-hidden
-                        rounded-3xl bg-white shadow-lg ring-1 ring-slate-200/60
-                        hover:ring-teal-400/60 transition">
+                 class="group cursor-pointer flex flex-col md:flex-row
+                        overflow-hidden rounded-3xl bg-white shadow-lg
+                        ring-1 ring-slate-200/60 hover:ring-teal-400/60 transition">
           <img src="Main_Pic.png"
-               alt="CFD simulation still of fruit-fly wing-beat"
+               alt="CFD simulation still"
                class="h-60 w-full object-contain md:h-auto md:w-1/2 bg-white" />
 
           <div class="flex flex-col gap-4 p-8 md:w-1/2">
-            <h3 class="text-2xl font-bold text-slate-900
-                       group-hover:text-teal-600 transition">
+            <h3 class="text-2xl font-bold group-hover:text-teal-600 transition">
               CFD Simulation of Fruit-Fly Wing-Beat Motion
             </h3>
 
             <p class="text-slate-700">
-              High-fidelity <strong>STAR-CCM+</strong> simulation using overset meshes to analyse lift,
-              drag &amp; aero-elastic passiveness across pitch, stroke and elevation degrees
-              of freedom. The study validates unsteady aerodynamics at insect scale and
-              informs micro-aerial-vehicle design.
+              High-fidelity <strong>STAR-CCM+</strong> simulation using overset meshes to analyse
+              lift, drag &amp; aero-elastic passiveness across pitch, stroke and elevation
+              motions. Validates unsteady aerodynamics at insect scale and informs
+              micro-aerial-vehicle design.
             </p>
 
             <div class="flex flex-wrap gap-2">
@@ -115,81 +111,71 @@
       </div>
     </section>
 
-    <!-- ========= ABOUT ========= -->
+    <!-- ===== ABOUT ===== -->
     <section id="about" class="py-24" data-aos="fade-up" data-aos-delay="100">
       <div class="mx-auto max-w-4xl px-6">
         <h2 class="text-3xl font-extrabold mb-6">About Me</h2>
         <p class="leading-relaxed text-lg">
-          I’m Raj, currently finishing an M.Sc. in Applied Mechanics at Chalmers University
-          with a focus on CFD &amp; Turbulence. From bird-inspired micro-aerial vehicle research
-          to HVAC energy optimisation using AI, my work lives at the intersection of physics
-          and data. When I’m not iterating on meshes, you’ll find me tinkering with
-          reinforcement-learning controllers or sketching novel aerodynamic concepts.
+          I’m Raj, finishing an M.Sc. in Applied Mechanics at Chalmers University
+          with a focus on CFD &amp; Turbulence. From bird-inspired micro-aerial
+          vehicle research to HVAC energy optimisation using AI, my work lives at
+          the intersection of physics and data.
         </p>
       </div>
     </section>
 
-    <!-- ========= CONTACT ========= -->
-    <section id="contact" class="py-24 bg-white/80 backdrop-blur-sm"
-             data-aos="fade-up">
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="py-24 bg-white/80 backdrop-blur-sm" data-aos="fade-up">
       <div class="mx-auto max-w-4xl px-6 text-center">
         <h2 class="text-3xl font-extrabold mb-6">Let’s build something together</h2>
-        <p>
-          If you’ve got an idea in need of simulation insight—or you just want to chat
-          fluid dynamics—drop me a line.
-        </p>
+        <p>If you’ve got an idea in need of simulation insight—or just want to chat fluid
+           dynamics—drop me a line.</p>
 
         <div class="mt-8 flex justify-center gap-4">
           <a href="mailto:svkrishna1299@gmail.com"
-             class="rounded-md bg-teal-600 px-6 py-3 text-white font-medium hover:bg-teal-700 transition">
-            svkrishna1299@gmail.com
-          </a>
+             class="rounded-md bg-teal-600 px-6 py-3 text-white font-medium
+                    hover:bg-teal-700 transition">svkrishna1299@gmail.com</a>
           <a href="https://linkedin.com/in/rajgopalakrishna" target="_blank" rel="noopener"
-             class="rounded-md border border-teal-600 px-6 py-3 font-medium text-teal-600 hover:bg-teal-50 transition">
-            Connect on LinkedIn
-          </a>
+             class="rounded-md border border-teal-600 px-6 py-3 font-medium
+                    text-teal-600 hover:bg-teal-50 transition">Connect on LinkedIn</a>
         </div>
       </div>
     </section>
 
-    <!-- ========= SLIDE-OUT DETAILS PANEL ========= -->
+    <!-- ===== SLIDE-OUT PANEL ===== -->
     <aside id="projectPanel"
            class="fixed inset-0 z-50 flex translate-x-full
                   transition-transform duration-500 ease-in-out">
-      <!-- LEFT RAIL (25 %) -->
+      <!-- Left rail (25 %) -->
       <div class="w-1/4 min-w-[260px] flex flex-col items-center justify-center
                   bg-slate-900 text-white relative">
-        <img src="Main_Pic.png" alt="Fruit-fly CFD hero"
-             class="w-80 object-contain" />
+        <img src="Main_Pic.png" alt="Fruit-fly hero" class="w-80 object-contain" />
         <h2 class="mt-6 text-center text-xl font-semibold px-6">
           CFD Simulation of Fruit-Fly Wing-Beat Motion
         </h2>
-        <!-- Close button (inside rail for high contrast) -->
         <button id="closeBtn"
                 class="absolute top-4 right-4 text-2xl leading-none hover:text-teal-300">
           &times;
         </button>
       </div>
 
-      <!-- RIGHT PANE (75 %) -->
+      <!-- Right pane (75 %) -->
       <div class="flex-1 overflow-y-auto bg-white px-8 py-12 space-y-10 no-scrollbar">
         <!-- Aim -->
         <section data-aos="fade-left" data-aos-delay="200">
           <h3 class="text-2xl font-bold mb-4">Aim</h3>
-          <p class="leading-relaxed">
-            Analyse the unsteady aerodynamics of a rigid fruit-fly wing during hovering.
-            Special emphasis on how the passive or active nature of pitch, stroke &amp;
-            elevation motions influences aerodynamic performance.
-          </p>
+          <p>Analyse the unsteady aerodynamics of a rigid fruit-fly wing during
+             hovering. Focus on how passive/active pitch, stroke &amp; elevation
+             influence performance.</p>
         </section>
 
         <!-- Methodology -->
         <section data-aos="fade-left" data-aos-delay="250">
           <h3 class="text-2xl font-bold mb-4">Methodology</h3>
           <ul class="list-disc pl-6 space-y-2">
-            <li>Wingbeat trajectories reconstructed via Fourier series from high-speed imaging</li>
-            <li>Transient STAR-CCM+ solver (1/1000<sup>th</sup> wingbeat) with overset mesh</li>
-            <li>Stroke ↔ lift, elevation ↔ stability, pitch ↔ optimal angle-of-attack modelling</li>
+            <li>Wingbeat trajectories from high-speed imaging → Fourier series</li>
+            <li>Transient STAR-CCM+ (1/1000<sup>th</sup> period) with overset mesh</li>
+            <li>Stroke ↔ lift, elevation ↔ stability, pitch ↔ optimal AoA modelling</li>
           </ul>
         </section>
 
@@ -198,8 +184,8 @@
           <h3 class="text-2xl font-bold mb-4">Key Results</h3>
           <ul class="list-disc pl-6 space-y-2">
             <li>Average lift ≈ 5.7 µN → Lift/Weight ≈ 1 (hovering ✅)</li>
-            <li>Pitch angle reversals + elevation peaks at stroke ends enable smooth AoA transitions</li>
-            <li>Moment hysteresis loops reveal active muscle contribution during pitch reversals</li>
+            <li>Pitch reversals + elevation peaks give smooth AoA transitions</li>
+            <li>Moment hysteresis loops reveal active muscle contribution</li>
           </ul>
 
           <p class="mt-6">
@@ -212,56 +198,31 @@
 
         <!-- Gallery -->
         <section class="grid gap-6 md:grid-cols-2">
-          <img src="fruitfly_images/aim-schematic.png"
-               alt="Domain setup"
-               class="rounded-lg shadow-lg opacity-0"
-               data-aos="fade-up" data-aos-delay="0" />
-          <img src="fruitfly_images/wing-trajectory.png"
-               alt="Wing trajectory"
-               class="rounded-lg shadow-lg opacity-0"
-               data-aos="fade-up" data-aos-delay="100" />
-          <img src="fruitfly_images/pitch-hysteresis.png"
-               alt="Pitch moment hysteresis"
-               class="rounded-lg shadow-lg opacity-0"
-               data-aos="fade-up" data-aos-delay="200" />
-          <img src="fruitfly_images/velocity-contour.png"
-               alt="Velocity contour"
-               class="rounded-lg shadow-lg opacity-0"
-               data-aos="fade-up" data-aos-delay="300" />
+          <img src="fruitfly_images/aim-schematic.png"   alt="Domain"          class="rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="0"   />
+          <img src="fruitfly_images/wing-trajectory.png" alt="Trajectory"      class="rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100" />
+          <img src="fruitfly_images/pitch-hysteresis.png"alt="Hysteresis loop" class="rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200" />
+          <img src="fruitfly_images/velocity-contour.png"alt="Velocity slice"  class="rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300" />
         </section>
       </div>
     </aside>
 
-    <!-- ========= SCRIPTS ========= -->
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      // Kick off AOS animations
-      AOS.init({ once: true, duration: 600 });
+      AOS.init({ once:true, duration:600 });
 
-      // Panel logic
-      const card   = document.getElementById('projectCard');
-      const panel  = document.getElementById('projectPanel');
-      const close  = document.getElementById('closeBtn');
+      const card  = document.getElementById('projectCard');
+      const panel = document.getElementById('projectPanel');
+      const close = document.getElementById('closeBtn');
 
       card.addEventListener('click', () => {
         panel.classList.remove('translate-x-full');
       });
 
-      function hidePanel() {
-        panel.classList.add('translate-x-full');
-      }
-
-      close.addEventListener('click', hidePanel);
-
-      // click on dimmed backdrop (area left of rail) to close
-      panel.addEventListener('click', (e) => {
-        if (e.target === panel) hidePanel();
-      });
-
-      // ESC key closes
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') hidePanel();
-      });
+      function hide() { panel.classList.add('translate-x-full'); }
+      close.addEventListener('click', hide);
+      panel.addEventListener('click', e => { if (e.target === panel) hide(); });
+      window.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
     </script>
   </body>
 </html>
